@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manager Profile</title>
+</head>
+<body>
+<table>
+	<tr>
+		<td>Username</td>
+		<td th:text="${manager.username}"/>
+		<td>
+			<form method="post" action="/managers/update/username">
+				<input style="display:none;" type="text" name="id" th:value="${manager.id}">
+				<input type="text" name="username" placeholder="New username">
+				<button type="submit" style="height:20px; background-color: dodgerblue;">Update username</button>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td th:text="${manager.password}"/>
+		<td>
+			<form method="post" action="/managers/update/password">
+				<input style="display:none;" type="text" name="id" th:value="${manager.id}">
+				<input type="text" name="password" placeholder="New password">
+				<button type="submit" style="height:20px; background-color: dodgerblue;">Update password</button>
+			</form>
+		</td>
+	</tr>
+</table>
+<form action="/managers" method="post">
+	<input style="width: 400px; font-size: xx-large;" type="submit" value="Back to Shelter Managers">
+</form>
+</body>
+</html>

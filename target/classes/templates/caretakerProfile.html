@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Caretaker Profile</title>
+</head>
+<body>
+<table>
+	<tr>
+		<td>Name</td>
+		<td th:text="${caretaker.name}"/>
+		<td>
+			<form method="post" action="/caretakers/update/name">
+				<input style="display:none;" type="text" name="id" th:value="${caretaker.id}">
+				<input type="text" name="name" placeholder="New name">
+				<button type="submit" style="height:20px; background-color: dodgerblue;">Update name</button>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>Surname</td>
+		<td th:text="${caretaker.surname}"/>
+		<td>
+			<form method="post" action="/caretakers/update/surname">
+				<input style="display:none;" type="text" name="id" th:value="${caretaker.id}">
+				<input type="text" name="surname" placeholder="New surname">
+				<button type="submit" style="height:20px; background-color: dodgerblue;">Update surname</button>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>Animals</td>
+		<td th:text="${caretaker.animals}"/>
+	</tr>
+</table>
+<form action="/caretakers" method="post">
+	<input style="width: 400px; font-size: xx-large;" type="submit" value="Back to Caretakers">
+</form>
+</body>
+</html>

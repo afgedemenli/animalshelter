@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sponsor Profile</title>
+</head>
+<body>
+<table>
+	<tr>
+		<td>Name</td>
+		<td th:text="${sponsor.name}"/>
+		<td>
+			<form method="post" action="/sponsors/update/name">
+				<input style="display:none;" type="text" name="id" th:value="${sponsor.id}">
+				<input type="text" name="name" placeholder="New name">
+				<button type="submit" style="height:20px; background-color: dodgerblue;">Update name</button>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>Surname</td>
+		<td th:text="${sponsor.surname}"/>
+		<td>
+			<form method="post" action="/sponsors/update/surname">
+				<input style="display:none;" type="text" name="id" th:value="${sponsor.id}">
+				<input type="text" name="surname" placeholder="New surname">
+				<button type="submit" style="height:20px; background-color: dodgerblue;">Update surname</button>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>Phone</td>
+		<td th:text="${sponsor.phone}"/>
+		<td>
+			<form method="post" action="/sponsors/update/phone">
+				<input style="display:none;" type="text" name="id" th:value="${sponsor.id}">
+				<input type="text" name="phone" placeholder="New phone">
+				<button type="submit" style="height:20px; background-color: dodgerblue;">Update phone</button>
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>Animals</td>
+		<td th:text="${sponsor.animals}"/>
+		<td>
+			<form method="post" action="/sponsors/update/animals">
+				<input style="display:none;" type="text" name="id" th:value="${sponsor.id}">
+				<input type="text" name="animals" placeholder="New animals">
+				<button type="submit" style="height:20px; background-color: dodgerblue;">Update animals</button>
+			</form>
+		</td>
+	</tr>
+</table>
+<form action="/sponsors" method="post">
+	<input style="width: 400px; font-size: xx-large;" type="submit" value="Back to Sponsors">
+</form>
+</body>
+</html>

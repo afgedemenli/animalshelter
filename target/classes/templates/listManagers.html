@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+	<title>Managers</title>
+</head>
+<body>
+<h1>Shelter Managers</h1>
+<button onclick="document.getElementById('form').style.display='block';" style="height: 35px; background-color: aquamarine;">+Add manager</button>
+<div id="form" style="display: none;">
+	<form action="/managers/add" method="post">
+		Username:<br>
+		<input type="text" name="username" placeholder="username">
+		<br>
+		Password :<br>
+		<input type="text" name="password" placeholder="password">
+		<br><br>
+		<input type="submit" value="Submit">
+	</form>
+</div>
+<br><br>
+<table>
+	<tr>
+		<td>ID</td>
+		<td>Username</td>
+		<td>Password</td>
+	</tr>
+	<tr th:each="manager: ${managers}">
+		<td th:text="${manager.id}"/>
+		<td th:text="${manager.username}"/>
+		<td th:text="${manager.password}"/>
+		<td>
+			<form method="post" action="/managers/profile">
+				<input style="display:none;" type="text" name="id" th:value="${manager.id}">
+				<button type="submit" value="Profile" style="height:20px; background-color: dodgerblue;">Go to profile</button>
+			</form>
+		</td>
+		<td>
+			<form method="post" action="/managers/delete">
+				<input style="display:none;" type="text" name="id" th:value="${manager.id}">
+				<button type="submit" value="Delete" style="height:20px; background-color: red;">Delete this user</button>
+			</form>
+		</td>
+	</tr>
+</table>
+<form action="/login" method="post">
+	<input style="display:none;" type="text" name="username" value="admin">
+	<input style="display:none;" type="text" name="password" value="admin">
+	<input style="height: 40px;" type="submit" value="Back to main menu">
+</form>
+</body>
+</html>

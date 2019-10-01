@@ -1,0 +1,13 @@
+mysql:
+  image: mysql
+  ports:
+    - "3306:3306"
+  expose:
+    - "3306"
+  environment:
+    - MYSQL_USER=afgedemenli
+    - MYSQL_PASSWORD=123456gs
+    - MYSQL_DATABASE=myshelter
+    - MYSQL_ROOT_PASSWORD=123456gs
+  volumes:
+    - "./conf.d:/etc/mysql/conf.d:ro"

@@ -1,0 +1,13 @@
+sheltermanager/controller/CaretakerController.class
+sheltermanager/repository/UserRepository.class
+sheltermanager/entity/Sponsor.class
+sheltermanager/controller/MainController.class
+sheltermanager/controller/ManagerController.class
+sheltermanager/bean/UserFormBean.class
+sheltermanager/service/LoginService.class
+sheltermanager/Application.class
+sheltermanager/entity/Animal.class
+sheltermanager/entity/Caretaker.class
+sheltermanager/bean/CaretakerFormBean.class
+sheltermanager/entity/User.class
+sheltermanager/repository/CaretakerRepository.class

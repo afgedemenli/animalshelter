@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+	<title>Animals</title>
+</head>
+<body>
+<h1>Animals</h1>
+<button onclick="document.getElementById('form').style.display='block';"
+				style="height: 35px; background-color: aquamarine;">+Add animal
+</button>
+<div id="form" style="display: none;">
+	<form action="/animals/add" method="post">
+		Name:<br>
+		<input type="text" name="name" placeholder="name">
+		<br>
+		Age :<br>
+		<input type="number" name="age" min="0" max="50">
+		<br>
+		Species:<br>
+		<input type="text" name="species" placeholder="species">
+		<br>
+		Sponsor Id:<br>
+		<input type="number" name="sponsor_id" min="0" max="500">
+		<br><br>
+		<input type="submit" value="Submit">
+	</form>
+</div>
+<br><br>
+<table>
+	<tr>
+		<td>ID</td>
+		<td>Name</td>
+		<td>Species</td>
+		<td>Age</td>
+		<td>SponsorID</td>
+		<td>CaretakerID</td>
+	</tr>
+	<tr th:each="animal: ${animals}">
+		<td th:text="${animal.id}"/>
+		<td th:text="${animal.name}"/>
+		<td th:text="${animal.species}"/>
+		<td th:text="${animal.age}"/>
+		<td th:text="${animal.sponsor_id}"/>
+		<td th:text="${animal.caretaker_id}"/>
+		<td>
+			<form method="post" action="/animals/profile">
+				<input style="display:none;" type="text" name="id" th:value="${animal.id}">
+				<button type="submit" value="Profile" style="height:20px; background-color: dodgerblue;">Go to profile</button>
+			</form>
+		</td>
+		<td>
+			<form method="post" action="/animals/delete">
+				<input style="display:none;" type="text" name="id" th:value="${animal.id}">
+				<button type="submit" value="Delete" style="height:20px; background-color: red;">Delete this animal</button>
+			</form>
+		</td>
+	</tr>
+</table>
+<form action="/animals/species" method="post">
+	<input type="text" name="species" value="" placeholder="Search with species">
+	<input style="height: 40px;" type="submit" value="Submit">
+</form>
+<form action="/animals/noSponsor" method="post">
+	<input style="height: 40px;" type="submit" value="Get Animals with no sponsor.">
+</form>
+<form action="/login" method="post">
+	<input style="display:none;" type="text" name="username" value="admin">
+	<input style="display:none;" type="text" name="password" value="admin">
+	<input style="height: 40px;" type="submit" value="Back to main menu">
+</form>
+</body>
+</html>

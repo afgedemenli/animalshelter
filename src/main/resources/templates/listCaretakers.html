@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #dddddd;
+}
+</style>
+	<title>Caretakers</title>
+</head>
+<body>
+<h1>Caretakers</h1>
+<button onclick="document.getElementById('form').style.display='block';" style="height: 35px; background-color: aquamarine;">+Add Caretaker</button>
+<div id="form" style="display: none;">
+	<form action="/caretakers/add" method="post">
+		Name:<br>
+		<input type="text" name="name" placeholder="name">
+		<br>
+		Surname :<br>
+		<input type="text" name="surname" placeholder="surname">
+		<br><br>
+		<input type="submit" value="Submit">
+	</form>
+</div>
+<br><br>
+<table>
+	<tr>
+		<td>ID</td>
+		<td>Name</td>
+		<td>Surname</td>
+		<td>Animals</td>
+	</tr>
+	<tr th:each="ct: ${caretakers}">
+		<td th:text="${ct.id}"/>
+		<td th:text="${ct.name}"/>
+		<td th:text="${ct.surname}"/>
+		<td th:text="${ct.animals}"/>
+		<td>
+			<form method="post" action="/caretakers/profile">
+				<input style="display:none;" type="text" name="id" th:value="${ct.id}">
+				<button type="submit" value="Profile" style="height:20px; background-color: dodgerblue;">Go to profile</button>
+			</form>
+		</td>
+		<td>
+			<form method="post" action="/caretakers/delete">
+				<input style="display:none;" type="text" name="id" th:value="${ct.id}">
+				<button type="submit" value="Delete" style="height:20px; background-color: red;">Delete this caretaker</button>
+			</form>
+		</td>
+	</tr>
+</table>
+<form action="/caretakers/ranked" method="post">
+	<input style="height: 40px;" type="submit" value="List caretakers by animals they have">
+</form><form action="/login" method="post">
+	<input style="display:none;" type="text" name="username" value="admin">
+	<input style="display:none;" type="text" name="password" value="admin">
+	<input style="height: 40px;" type="submit" value="Back to main menu">
+</form>
+</body>
+</html>
